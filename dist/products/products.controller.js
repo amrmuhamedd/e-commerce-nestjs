@@ -21,6 +21,7 @@ const jwtauth_guard_1 = require("../auth/guards/jwtauth.guard");
 const role_enum_1 = require("../auth/roles/role.enum");
 const role_decorator_1 = require("../auth/roles/role.decorator");
 const roles_guard_1 = require("../auth/roles/roles.guard");
+const swagger_1 = require("@nestjs/swagger");
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -62,6 +63,7 @@ __decorate([
 __decorate([
     common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
     role_decorator_1.Roles(role_enum_1.Role.Admin),
+    swagger_1.ApiBearerAuth(),
     common_1.Post(),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
@@ -84,6 +86,7 @@ __decorate([
 ], ProductsController.prototype, "getProductsByUserId", null);
 __decorate([
     common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+    swagger_1.ApiBearerAuth(),
     common_1.Post('cart/:id'),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),
@@ -93,6 +96,7 @@ __decorate([
 ], ProductsController.prototype, "addProductToCarts", null);
 __decorate([
     common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+    swagger_1.ApiBearerAuth(),
     common_1.Get('cart/products'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
@@ -100,6 +104,7 @@ __decorate([
 ], ProductsController.prototype, "getProductsinCart", null);
 __decorate([
     common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard),
+    swagger_1.ApiBearerAuth(),
     common_1.Delete('cart/remove/:id'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
@@ -108,6 +113,7 @@ __decorate([
 ], ProductsController.prototype, "removeproductFromCart", null);
 __decorate([
     common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
+    swagger_1.ApiBearerAuth(),
     role_decorator_1.Roles(role_enum_1.Role.Admin),
     common_1.Put(':id'),
     __param(0, common_1.Param('id')),
@@ -119,6 +125,7 @@ __decorate([
 __decorate([
     common_1.UseGuards(jwtauth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
     role_decorator_1.Roles(role_enum_1.Role.Admin),
+    swagger_1.ApiBearerAuth(),
     common_1.Delete(':id'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
@@ -126,6 +133,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "remove", null);
 ProductsController = __decorate([
+    swagger_1.ApiTags('products'),
     common_1.Controller('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService])
 ], ProductsController);
