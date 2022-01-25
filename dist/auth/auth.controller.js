@@ -18,11 +18,12 @@ const auth_service_1 = require("./auth.service");
 const localauth_guard_1 = require("./guards/localauth.guard");
 const createuser_dto_1 = require("./dto/createuser.dto");
 const swagger_1 = require("@nestjs/swagger");
+const login_dto_1 = require("./dto/login.dto");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async login(req) {
+    async login(req, doc) {
         return this.authService.login(req.user._doc);
     }
     async register(createUserDto) {
@@ -33,8 +34,9 @@ __decorate([
     common_1.UseGuards(localauth_guard_1.LocalAuthGuard),
     common_1.Post('login'),
     __param(0, common_1.Request()),
+    __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, login_dto_1.LoginDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([

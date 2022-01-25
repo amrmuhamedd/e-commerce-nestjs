@@ -9,25 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateProductDto = void 0;
+exports.CreateUserDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-class CreateProductDto {
+class CreateUserDto {
 }
 __decorate([
     class_validator_1.IsNotEmpty(),
     swagger_1.ApiProperty(),
+    class_validator_1.NotContains(' ', { message: "user name shouldn't countain white spaces" }),
     __metadata("design:type", String)
-], CreateProductDto.prototype, "name", void 0);
+], CreateUserDto.prototype, "username", void 0);
+__decorate([
+    class_validator_1.IsEmail(),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "email", void 0);
+__decorate([
+    class_validator_1.Length(6, 20),
+    swagger_1.ApiProperty(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "password", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     swagger_1.ApiProperty(),
     __metadata("design:type", String)
-], CreateProductDto.prototype, "description", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    swagger_1.ApiProperty(),
-    __metadata("design:type", Number)
-], CreateProductDto.prototype, "quantity", void 0);
-exports.CreateProductDto = CreateProductDto;
-//# sourceMappingURL=creatproduct.dto.js.map
+], CreateUserDto.prototype, "roles", void 0);
+exports.CreateUserDto = CreateUserDto;
+//# sourceMappingURL=createuser.dto%20copy.js.map
