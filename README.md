@@ -3,6 +3,7 @@ Docs live preview [here](https://amr-ecommerce.herokuapp.com/docs/#/)
 
 Backend useing Nest js  for e-commerce project 
 you can Register user 
+<br />
 ---if role is "user" this account cant create products and edite any project
 --- "admin" only can create and update products which created by this admin only 
 
