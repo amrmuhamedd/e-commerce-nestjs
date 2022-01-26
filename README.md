@@ -5,6 +5,8 @@ Backend useing Nest js  for e-commerce project
 you can Register user 
 <br />
 ---if role is "user" this account cant create products and edite any project
+<br />
+
 --- "admin" only can create and update products which created by this admin only 
 
 register user can  see products in general and products related to specified seller and add product to cart
