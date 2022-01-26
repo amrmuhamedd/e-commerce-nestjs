@@ -1,6 +1,6 @@
 Docs live preview [here](https://amr-ecommerce.herokuapp.com/docs/#/)
 
-**Note:
+**Note:**
 Backend useing Nest js  for e-commerce project 
 
 to start use this project local you should do: 
