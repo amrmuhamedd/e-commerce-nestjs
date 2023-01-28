@@ -1,4 +1,4 @@
-Docs live preview [here](https://amr-ecommerce.herokuapp.com/docs/#/)
+Docs live preview [here](https://e-commerce-0tqz.onrender.com/docs/)
 
 
 Backend useing Nest js  for e-commerce project 
