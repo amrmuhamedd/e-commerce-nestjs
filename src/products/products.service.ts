@@ -56,6 +56,10 @@ export class ProductsService {
     return this.ProductModel.find().exec();
   }
   async getProductbyId(id) {
+     const product = await this.productsService.getProductbyId(id);
+    if (!product) {
+      throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+    }
     return this.ProductModel.findById(id);
   }
 
