@@ -28,29 +28,32 @@ export class ProductsService {
     @InjectConnection() private readonly connection: mongoose.Connection,
   ) {}
 
-  async create(createProductDto: CreateProductDto): Promise<Products> {
+async create(createProductDto: CreateProductDto): Promise<Products> {
+  const session = await this.connection.startSession();
+  session.startTransaction();
+
+  try {
     const createdProduct = new this.ProductModel({
       ...createProductDto,
       seller: this.request.user['id'],
     });
-    let user;
-    try {
-      user = await this.userModal.findById(this.request.user['id']);
-    } catch (err) {
-      console.log(err);
-    }
-    try {
-      const sess = await this.connection.startSession();
-      sess.startTransaction();
-      await createdProduct.save({ session: sess });
-      user.products.push(createdProduct);
-      await user.save({ session: sess });
-      await sess.commitTransaction();
-    } catch (err) {
-      console.log(err, user);
-    }
+
+    await createdProduct.save({ session });
+
+    const user = await this.userModal.findById(this.request.user['id']);
+    user.products.push(createdProduct);
+    await user.save({ session });
+
+    await session.commitTransaction();
+
     return createdProduct;
+  } catch (error) {
+    await session.abortTransaction();
+    throw error; // Rethrow the error to handle it at the controller level
+  } finally {
+    session.endSession();
   }
+}
 
   async getAll(): Promise<Products[]> {
     return this.ProductModel.find().exec();
