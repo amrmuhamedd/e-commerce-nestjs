@@ -6,6 +6,20 @@ Welcome to the documentation for the E-Commerce project built with NestJS. This 
 
 The E-Commerce project is built using the NestJS framework, which provides a robust foundation for creating scalable and maintainable applications. The project follows a clear structure to ensure organization and readability.
 
+
+
+## Tech Stack
+
+The E-Commerce project REST API is built using the following technologies:
+
+- **Node.js**: The server-side environment for running JavaScript.
+- **Nest.js**: A fast and minimalist web framework for Node.js.
+- **mongoose**: An ORM (Object-Relational Mapping) for database interactions.
+- **MongoDb**: A powerful, open-source relational database.
+- **JWT (JSON Web Tokens)**: For secure authentication and authorization.
+- **Swagger**: For API documentation.
+
+
 ### Project Structure
 
 The project is organized into the following main directories:
